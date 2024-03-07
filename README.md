@@ -4,5 +4,5 @@
 </div> 
 <br><hr>
 <p>
-  aca se encuentras los codios en la unidad de almacenaniento bajo el lenguaje PSeInt, variable, tipo de variables,operadores,condicionales,seleccion de caso, control de flujo con ciclos; mientras,repetir,para. y funciones vectores y matrices
+  aca se encuentras los códigos en la unidad de almacenaniento bajo el lenguaje PSeInt, variable, tipo de variables,operadores,condicionales,seleccion de caso, control de flujo con ciclos; mientras,repetir,para. y funciones vectores y matrices
 </p>
