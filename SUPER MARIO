@@ -1,0 +1,76 @@
+class Personaje:
+    def __init__(self, nombre, posicion_x, posicion_y):
+        self.__nombre = nombre
+        self.__posicion_x = posicion_x
+        self.__posicion_y = posicion_y
+
+    # Métodos para obtener y establecer los atributos
+    def get_nombre(self):
+        return self.__nombre
+
+    def set_nombre(self, nombre):
+        self.__nombre = nombre
+
+    def get_posicion_x(self):
+        return self.__posicion_x
+
+    def set_posicion_x(self, posicion_x):
+        self.__posicion_x = posicion_x
+
+    def get_posicion_y(self):
+        return self.__posicion_y
+
+    def set_posicion_y(self, posicion_y):
+        self.__posicion_y = posicion_y
+
+    # Método para mover el personaje en una dirección dada
+    def mover(self, direccion):
+        if direccion == "izquierda":
+            self.__posicion_x -= 1
+        elif direccion == "derecha":
+            self.__posicion_x += 1
+        elif direccion == "arriba":
+            self.__posicion_y += 1
+        elif direccion == "abajo":
+            self.__posicion_y -= 1
+        print(f"{self.__nombre} se ha movido a ({self.__posicion_x}, {self.__posicion_y})")
+
+    # Método para saltar
+    def saltar(self):
+        self.__posicion_y += 2
+        print(f"{self.__nombre} ha saltado a la posición ({self.__posicion_x}, {self.__posicion_y})")
+
+# Clase derivada Mario con habilidad de lanzar bolas de fuego
+class Mario(Personaje):
+    def lanzar_bola_de_fuego(self):
+        print(f"{self.get_nombre()} lanza una bola de fuego")
+
+# Clase derivada Luigi con habilidad de saltar más alto
+class Luigi(Personaje):
+    def saltar(self):
+        self.set_posicion_y(self.get_posicion_y() + 3)
+        print(f"{self.get_nombre()} ha saltado alto a la posición ({self.get_posicion_x()}, {self.get_posicion_y()})")
+
+# Clase derivada Enemigo con tipos diferentes
+class Enemigo(Personaje):
+    def __init__(self, nombre, posicion_x, posicion_y, tipo_enemigo):
+        super().__init__(nombre, posicion_x, posicion_y)
+        self.tipo_enemigo = tipo_enemigo
+
+    def mostrar_tipo(self):
+        print(f"{self.get_nombre()} es un {self.tipo_enemigo}")
+
+# Ejemplo de uso
+mario = Mario("Mario", 0, 0)
+luigi = Luigi("Luigi", 0, 0)
+goomba = Enemigo("Goomba", 5, 5, "Goomba")
+
+mario.mover("derecha")
+mario.saltar()
+mario.lanzar_bola_de_fuego()
+
+luigi.mover("izquierda")
+luigi.saltar()
+
+goomba.mover("abajo")
+goomba.mostrar_tipo()
