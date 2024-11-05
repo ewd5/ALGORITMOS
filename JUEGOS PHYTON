@@ -1,0 +1,46 @@
+class Luchador:
+    def __init__(self, nombre, puntos_de_vida, fuerza):
+        self.__nombre = nombre
+        self.__puntos_de_vida = puntos_de_vida
+        self.__fuerza = fuerza
+
+    # Métodos para obtener y establecer los atributos
+    def get_nombre(self):
+        return self.__nombre
+
+    def set_nombre(self, nombre):
+        self.__nombre = nombre
+
+    def get_puntos_de_vida(self):
+        return self.__puntos_de_vida
+
+    def set_puntos_de_vida(self, puntos_de_vida):
+        self.__puntos_de_vida = puntos_de_vida
+
+    def get_fuerza(self):
+        return self.__fuerza
+
+    def set_fuerza(self, fuerza):
+        self.__fuerza = fuerza
+
+    # Método para atacar a otro luchador
+    def atacar(self, oponente):
+        if isinstance(oponente, Luchador):
+            oponente.recibir_danio(self.__fuerza)
+            print(f"{self.__nombre} ataca a {oponente.get_nombre()} causando {self.__fuerza} puntos de daño.")
+        else:
+            print("El oponente debe ser una instancia de la clase Luchador.")
+
+    # Método para recibir daño
+    def recibir_danio(self, danio):
+        self.__puntos_de_vida -= danio
+        if self.__puntos_de_vida < 0:
+            self.__puntos_de_vida = 0
+        print(f"{self.__nombre} recibe {danio} puntos de daño. Puntos de vida restantes: {self.__puntos_de_vida}")
+
+# Ejemplo de uso
+luchador1 = Luchador("Guerrero", 100, 20)
+luchador2 = Luchador("Ninja", 80, 15)
+
+luchador1.atacar(luchador2)
+luchador2.atacar(luchador1)
