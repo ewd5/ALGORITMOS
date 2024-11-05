@@ -1,0 +1,72 @@
+class Vehiculo:
+    def __init__(self, modelo, velocidad_maxima, aceleracion):
+        self.__modelo = modelo
+        self.__velocidad_maxima = velocidad_maxima
+        self.__aceleracion = aceleracion
+        self.__velocidad_actual = 0  # Atributo para llevar la velocidad actual
+
+    # Métodos para obtener y establecer los atributos
+    def get_modelo(self):
+        return self.__modelo
+
+    def set_modelo(self, modelo):
+        self.__modelo = modelo
+
+    def get_velocidad_maxima(self):
+        return self.__velocidad_maxima
+
+    def set_velocidad_maxima(self, velocidad_maxima):
+        self.__velocidad_maxima = velocidad_maxima
+
+    def get_aceleracion(self):
+        return self.__aceleracion
+
+    def set_aceleracion(self, aceleracion):
+        self.__aceleracion = aceleracion
+
+    # Método para acelerar el vehículo
+    def acelerar(self):
+        if self.__velocidad_actual + self.__aceleracion <= self.__velocidad_maxima:
+            self.__velocidad_actual += self.__aceleracion
+        else:
+            self.__velocidad_actual = self.__velocidad_maxima
+        print(f"{self.__modelo} acelera a {self.__velocidad_actual} km/h.")
+
+    # Método para frenar el vehículo
+    def frenar(self):
+        if self.__velocidad_actual - self.__aceleracion >= 0:
+            self.__velocidad_actual -= self.__aceleracion
+        else:
+            self.__velocidad_actual = 0
+        print(f"{self.__modelo} frena a {self.__velocidad_actual} km/h.")
+
+# Clase derivada Coche
+class Coche(Vehiculo):
+    def __init__(self, modelo, velocidad_maxima, aceleracion, num_puertas):
+        super().__init__(modelo, velocidad_maxima, aceleracion)
+        self.num_puertas = num_puertas
+
+    def mostrar_info(self):
+        print(f"Coche: {self.get_modelo()}, Velocidad Máxima: {self.get_velocidad_maxima()} km/h, Aceleración: {self.get_aceleracion()} km/h², Puertas: {self.num_puertas}")
+
+# Clase derivada Moto
+class Moto(Vehiculo):
+    def __init__(self, modelo, velocidad_maxima, aceleracion, tipo):
+        super().__init__(modelo, velocidad_maxima, aceleracion)
+        self.tipo = tipo  # Ejemplo: deportiva, crucero, etc.
+
+    def mostrar_info(self):
+        print(f"Moto: {self.get_modelo()}, Velocidad Máxima: {self.get_velocidad_maxima()} km/h, Aceleración: {self.get_aceleracion()} km/h², Tipo: {self.tipo}")
+
+# Ejemplo de uso
+coche1 = Coche("Ferrari", 300, 30, 2)
+moto1 = Moto("Harley-Davidson", 200, 20, "crucero")
+
+coche1.mostrar_info()
+moto1.mostrar_info()
+
+coche1.acelerar()
+coche1.frenar()
+
+moto1.acelerar()
+moto1.frenar()
